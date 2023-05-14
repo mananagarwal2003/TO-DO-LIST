@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                
+                 alert.setTitle("Delete");
+                 alert.setMessage("Do you want to delete this item from the list?");
+                 alert.setCancelable(false);
 
             }
         });
