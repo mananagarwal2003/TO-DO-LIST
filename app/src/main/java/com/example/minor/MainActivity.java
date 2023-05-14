@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                
 
             }
         });
