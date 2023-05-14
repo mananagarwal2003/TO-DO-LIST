@@ -85,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                      }
                  });
 
+                 AlertDialog alertDialog=alert.create();
+                 alertDialog.show();
+
             }
         });
 
