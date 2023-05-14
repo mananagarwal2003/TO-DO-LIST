@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 item.setText("");
                 FileHelper.writeData(itemList,getApplicationContext());
                 arrayAdapter.notifyDataSetChanged();
-
             }
         });
 
