@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 String itemName = item.getText().toString();
                 itemList.add(itemName);
                 item.setText("");
+                FileHelper.writeData(itemList,getApplicationContext());
+                arrayAdapter.notifyDataSetChanged();
 
             }
         });
