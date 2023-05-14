@@ -34,6 +34,9 @@ public class FileHelper {
             itemList = (ArrayList<String>) ois.readObject();
         }
         catch (FileNotFoundException e){
+
+            itemList = new ArrayList<>();
+
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
