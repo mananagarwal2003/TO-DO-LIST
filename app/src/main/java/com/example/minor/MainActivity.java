@@ -70,8 +70,14 @@ public class MainActivity extends AppCompatActivity {
                  alert.setCancelable(false);
                  alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                      @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                     }
+                 });
+                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                     @Override
                      public void onClick(DialogInterface dialogInterface, int i) {
-
+                         itemList.remove()
                      }
                  })
 
