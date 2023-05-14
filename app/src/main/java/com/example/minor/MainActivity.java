@@ -1,7 +1,9 @@
 package com.example.minor;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -14,6 +16,7 @@ import com.example.minor.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         add = findViewById(R.id.button);
         listView =findViewById(R.id.list);
 
-        itemList = FileHelper.readData(context this);
+        itemList = FileHelper.readData(this);
 
-        arrayAdapter = new ArrayAdapter<>(context this, android.R.layout.simple_list_item_1,android.R.id.text1,itemList);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,android.R.id.text1,itemList);
 
         ListView.setAdapter(arrayAdapter);
 
@@ -56,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+
+            }
+        });
+
     }
 
 
