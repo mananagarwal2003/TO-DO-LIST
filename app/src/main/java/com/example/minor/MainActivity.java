@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,android.R.id.text1,itemList);
 
-        ListView.setAdapter(arrayAdapter);
+        listView.setAdapter(arrayAdapter);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
                 String itemName = item.getText().toString();
                 itemList.add(itemName);
