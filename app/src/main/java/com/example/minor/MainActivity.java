@@ -1,6 +1,7 @@
 package com.example.minor;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,6 +66,27 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                 alert.setTitle("Delete");
+                 alert.setMessage("Do you want to delete this item from the list?");
+                 alert.setCancelable(false);
+                 alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                     }
+                 });
+                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialogInterface, int i) {
+                         itemList.remove(i);
+                         arrayAdapter.notifyDataSetChanged();
+                         FileHelper.writeData(itemList,getApplicationContext());
+
+                     }
+                 });
+
+                 AlertDialog alertDialog=alert.create();
+                 alertDialog.show();
 
             }
         });
