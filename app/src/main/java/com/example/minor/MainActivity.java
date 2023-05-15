@@ -1,7 +1,10 @@
 package com.example.minor;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -14,6 +17,7 @@ import com.example.minor.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +54,36 @@ public class MainActivity extends AppCompatActivity {
                 item.setText("");
                 FileHelper.writeData(itemList,getApplicationContext());
                 arrayAdapter.notifyDataSetChanged();
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setTitle("Delete");
+                alert.setMessage("Do you want to delete this?");
+                alert.setCancelable(false);
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        itemList.remove(position);
+                        arrayAdapter.notifyDataSetChanged();
+                        FileHelper.writeData(itemList,getApplicationContext());
+
+                    }
+                });
+
+                AlertDialog alertDialog= alert.create();
+                alertDialog.show();
+
             }
         });
 
